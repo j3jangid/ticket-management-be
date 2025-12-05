@@ -1,0 +1,247 @@
+{
+    "info": {
+        "name": "Ticket Management API",
+        "_postman_id": "12345678-abcd-efgh-ijkl-987654321000",
+        "description": "Collection for testing Ticket Management System backend",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Customer\",\n  \"email\": \"customer@example.com\",\n  \"password\": \"password\",\n  \"role\": \"customer\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3534/auth/register",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3534",
+                            "path": [
+                                "auth",
+                                "register"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"customer@example.com\",\n  \"password\": \"password\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3534/auth/login",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3534",
+                            "path": [
+                                "auth",
+                                "login"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Customer",
+            "item": [
+                {
+                    "name": "Create Ticket",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3534/tickets",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3534",
+                            "path": [
+                                "tickets"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "My Tickets",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3534/tickets/my",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3534",
+                            "path": [
+                                "tickets",
+                                "my"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Agent",
+            "item": [
+                {
+                    "name": "All Tickets",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3534/tickets",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3534",
+                            "path": [
+                                "tickets"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Ticket Detail",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:3534/tickets/:id",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3534",
+                            "path": [
+                                "tickets",
+                                ":id"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Add Comment",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"message\": \"We are working on your issue\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3534/tickets/:id/comment",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3534",
+                            "path": [
+                                "tickets",
+                                ":id",
+                                "comment"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Change Status",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"status\": \"in_progress\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:3534/tickets/:id/status",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3534",
+                            "path": [
+                                "tickets",
+                                ":id",
+                                "status"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "token",
+            "value": ""
+        }
+    ]
+}
