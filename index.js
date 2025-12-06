@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import url from 'url';
 import { connectDB } from './src/config/connectDB.js';
 import authRoutes from './src/router/auth.routes.js';
 import ticketRoutes from './src/router/ticket.routes.js';
@@ -13,7 +13,7 @@ dotenv.config();
 const PORT = process.env.PORT || 3534;
 const app = express();
 
-const __filename = fileURLToPath(import.meta.url);
+const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Middleware
