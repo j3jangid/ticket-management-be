@@ -3,10 +3,10 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import url from 'url';
-import { connectDB } from './src/config/connectDB.js';
+import connectDB from './src/config/connectDB.js';
 import authRoutes from './src/router/auth.routes.js';
 import ticketRoutes from './src/router/ticket.routes.js';
-import { errorHandler } from './src/middleware/errorHandler.js';
+import errorHandler from './src/middleware/errorHandler.js';
 
 dotenv.config();
 

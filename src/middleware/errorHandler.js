@@ -1,4 +1,4 @@
-export function errorHandler(err, req, res, next) {
+export default function errorHandler(err, req, res, next) {
     console.error(err);
 
     const data = {
